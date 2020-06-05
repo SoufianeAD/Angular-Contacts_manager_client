@@ -1,0 +1,61 @@
+<div class="container col-md-12 mt-4">
+
+  <a routerLink="/create-entreprise" class="btn btn-primary">
+    Nouvelle Entreprise
+    <i class="fa fa-plus btn-group-vertical"  style="font-size: 24px;"></i>
+  </a>
+
+  <div class="row">
+
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fa fa-search"></i>
+          </div>
+        </div>
+        <input id="searchInput" type="text" class="form-control " autocomplete="off" (keyup)="onFilter()" placeholder="Search">
+        <button class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" (click)="onClear()">
+          <i class="fa fa-times" style="color: lightgray;"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped mt-3">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Secteur d'activité</th>
+      <th>Ville</th>
+      <th>Pays</th>
+      <th>Nombre d'employés</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of list;">
+      <td>{{ item.id }}</td>
+      <td>{{ item.nom }}</td>
+      <td>{{ item.secteurActivite }}</td>
+      <td>{{ item.ville }}</td>
+      <td>{{ item.pays }}</td>
+      <td>{{ item.nombreEmploye }}</td>
+      <td>
+        <button class="btn" (click)="onEdit(item)" data-toggle="tooltip" data-placement="bottom" title="Modifier">
+          <i class="fa fa-pencil" style="color: blue; font-size: 24px;"></i>
+        </button>
+      </td>
+      <td>
+        <button class="btn" (click)="onDelete(item)" data-toggle="tooltip" data-placement="bottom" title="Supprimer">
+          <i class="fa fa-trash" style="color: blue; font-size: 24px;"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

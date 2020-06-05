@@ -1,0 +1,48 @@
+<a routerLink="/list-entreprise" class="float-left btn btn-secondary rounded-circle"
+   data-toggle="tooltip" data-placement="bottom" title="retour">
+  <i class="fa fa-arrow-left"></i>
+</a>
+
+<div class="container col-md-8 border rounded p-5">
+  <div class="text-center">
+    <h3>Nouvelle Entreprise</h3>
+  </div>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="form-group">
+      <label>Nom</label>
+      <input formControlName="nom" class="form-control" type="text">
+      <p *ngIf="nom.invalid && nom.touched" class="text-danger">Champ obligatoire*</p>
+    </div>
+
+    <div class="form-group">
+      <label>Secteur d'activité</label>
+      <select  class="form-control" formControlName="secteurActivite">
+        <option *ngFor="let item of listSecteurActivite;" [ngValue]="item" >{{ item }}</option>
+      </select>
+      <p *ngIf="secteurActivite.invalid && secteurActivite.touched" class="text-danger">Champ obligatoire*</p>
+    </div>
+
+    <div class="form-group">
+      <label>Ville</label>
+      <input formControlName="ville" class="form-control" type="text">
+      <p *ngIf="ville.invalid && ville.touched" class="text-danger">Champ obligatoire*</p>
+    </div>
+
+    <div class="form-group">
+      <label>Pays</label>
+      <input formControlName="pays" class="form-control" type="text">
+      <p *ngIf="pays.invalid && pays.touched" class="text-danger">Champ obligatoire*</p>
+    </div>
+
+    <div class="form-group">
+      <label>Nombre d'employés</label>
+      <input formControlName="nombreEmploye" class="form-control" type="number">
+      <p *ngIf="pays.invalid && pays.touched" class="text-danger">Champ numérique*</p>
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Valider</button>
+    </div>
+
+  </form>
+</div>
