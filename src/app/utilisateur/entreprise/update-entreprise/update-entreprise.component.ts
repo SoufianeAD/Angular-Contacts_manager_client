@@ -21,7 +21,7 @@ export class UpdateEntrepriseComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(
-      params => {
+      (params) => {
         const id = params.get('id');
         this.currentEntreprise = this.entrepriseService.findById(+id);
         this.init();
@@ -50,12 +50,14 @@ export class UpdateEntrepriseComponent implements OnInit {
   get nombreEmploye() { return this.form.get('nombreEmploye'); }
 
   onSubmit() {
-    this.currentEntreprise.nom = this.form.get('nom').value;
-    this.currentEntreprise.secteurActivite = this.form.get('secteurActivite').value;
-    this.currentEntreprise.ville = this.form.get('ville').value;
-    this.currentEntreprise.pays = this.form.get('pays').value;
-    this.currentEntreprise.nombreEmploye = this.form.get('nombreEmploye').value;
-    this.entrepriseService.update(this.currentEntreprise);
+    if (confirm('Confirmer la modification ? ')) {
+      this.currentEntreprise.nom = this.form.get('nom').value;
+      this.currentEntreprise.secteurActivite = this.form.get('secteurActivite').value;
+      this.currentEntreprise.ville = this.form.get('ville').value;
+      this.currentEntreprise.pays = this.form.get('pays').value;
+      this.currentEntreprise.nombreEmploye = this.form.get('nombreEmploye').value;
+      this.entrepriseService.update(this.currentEntreprise);
+    }
     this.router.navigate(['/list-entreprise']);
   }
 

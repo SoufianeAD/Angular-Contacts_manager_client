@@ -56,7 +56,6 @@ export class EntrepriseService {
   }
 
   update(entreprise: Entreprise) {
-    confirm('Confirmer la modification ? ' + JSON.stringify(entreprise));
     this.http.put<Entreprise>(this.url + '/update', entreprise).subscribe(
       (data: Entreprise) => {
         this.getAll();

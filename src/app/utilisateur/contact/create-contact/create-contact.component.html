@@ -1,0 +1,49 @@
+<a routerLink="/list-contact" class="float-left btn btn-secondary rounded-circle"
+   data-toggle="tooltip" data-placement="bottom" title="retour">
+  <i class="fa fa-arrow-left"></i>
+</a>
+
+<div class="container col-md-8 border rounded p-5">
+  <div class="text-center">
+    <h3>Nouveau Contact</h3>
+  </div>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="form-group">
+      <label>Nom</label>
+      <input formControlName="nom" class="form-control" type="text">
+      <p *ngIf="nom.invalid && nom.touched" class="text-danger">Champ obligatoire*</p>
+    </div>
+
+    <div class="form-group">
+      <label>Prénom</label>
+      <input formControlName="prenom" class="form-control" type="text">
+      <p *ngIf="prenom.invalid && prenom.touched" class="text-danger">Champ obligatoire*</p>
+    </div>
+
+    <div class="form-group">
+      <label>Fonction</label>
+      <input formControlName="fonction" class="form-control" type="text">
+      <p *ngIf="fonction.invalid && fonction.touched" class="text-danger">Champ obligatoire*</p>
+    </div>
+
+    <div class="form-group">
+      <label>Profil</label>
+      <input formControlName="profil" class="form-control" type="text">
+      <p *ngIf="profil.invalid && profil.touched" class="text-danger">Champ obligatoire*</p>
+    </div>
+
+    <div class="form-group">
+      <label>Entreprise</label>
+      <select  class="form-control" formControlName="entreprise">
+        <option *ngFor="let item of entreprises;" [ngValue]="item" >{{ item.nom }}, {{ item.ville}}, {{ item.pays }}</option>
+      </select>
+      <p *ngIf="entreprise.invalid && entreprise.touched" class="text-danger">Champ obligatoire*</p>
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Valider</button>
+    </div>
+
+  </form>
+</div>
+
