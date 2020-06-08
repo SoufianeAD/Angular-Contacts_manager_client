@@ -1,4 +1,6 @@
-<app-utilisateur-navbar></app-utilisateur-navbar>
+<app-navbar *ngIf="activeUser === undefined"></app-navbar>
+<app-admin-navbar *ngIf="activeUser !== undefined && activeUser.roles.length >= 2"></app-admin-navbar>
+<app-utilisateur-navbar *ngIf="activeUser !== undefined && activeUser.roles.length === 1"></app-utilisateur-navbar>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

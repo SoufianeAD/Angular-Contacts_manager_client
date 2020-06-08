@@ -22,7 +22,7 @@ export class UpdateContactComponent implements OnInit {
   constructor(public entrepriseService: EntrepriseService,
               public contactService: ContactService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.subscritpion = this.entrepriseService.entreprisesSubject.subscribe(

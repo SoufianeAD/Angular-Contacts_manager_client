@@ -1,0 +1,32 @@
+<a routerLink="/list-utilisateur" class="float-left btn btn-secondary rounded-circle"
+   data-toggle="tooltip" data-placement="bottom" title="retour">
+  <i class="fa fa-arrow-left"></i>
+</a>
+
+<div class="container col-md-8 border rounded p-5">
+  <div class="text-center">
+    <h3>Nouveau Utilisateur</h3>
+  </div>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="form-group">
+      <label>Nom d'utilisateur</label>
+      <input formControlName="userName" class="form-control" type="text">
+      <p *ngIf="userName.invalid && userName.touched" class="text-danger">Champ obligatoire*</p>
+    </div>
+
+    <div class="btn-group-vertical">
+      <div>
+        <input type="checkbox" formControlName="roleAdmin"/> Admin
+      </div>
+      <div>
+        <input type="checkbox" formControlName="roleUtilisateur"/> Utilisateur
+      </div>
+    </div>
+
+    <div class="text-center mt-2">
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Valider</button>
+    </div>
+
+  </form>
+</div>
+

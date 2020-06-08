@@ -53,7 +53,6 @@ export class CreateContactComponent implements OnInit {
   get entreprise() { return this.form.get('entreprise'); }
 
   onSubmit() {
-    alert('add contact');
     const contact = new Contact();
     contact.nom = this.form.get('nom').value;
     contact.prenom = this.form.get('prenom').value;
